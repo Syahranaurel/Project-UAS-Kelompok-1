@@ -134,3 +134,44 @@ function tentukanHuruf(Nilai: number): string {
   }
   return Huruf;
 }
+// Menentukan apakah mahasiswa lulus atau tidak serta catatan khusus
+function tentukanStatus(Huruf: string, Kehadiran: number, UAS: number, Remedi: number): Status {
+  let Lulus: boolean = false;
+  let Catatan: string = "";
+
+  switch (Huruf) {
+    case "A":
+      Lulus = true;
+      Catatan = "Sangat Baik";
+      break;
+    case "B":
+      Lulus = true;
+      Catatan = "Baik";
+      break;
+    case "C":
+      Lulus = true;
+      Catatan = "Cukup";
+      break;
+    case "D":
+      // Jika nilai D, perlu pengecekan tambahan untuk remidi
+      if (Kehadiran >= BatasHadir) {
+        if (UAS >= 40) {
+          switch (Remedi) {
+            case 0: Catatan = "Berhak remidi pertama."; break;
+            case 1: Catatan = "Berhak remidi kedua."; break;
+            case 2: Catatan = "Berhak remidi terakhir."; break;
+            default: Catatan = "remidi habis, wajib mengulang."; break;
+          }
+        } else {
+          Catatan = "Nilai UAS terlalu rendah, tidak berhak remidi.";
+        }
+      } else {
+        Catatan = "Kehadiran kurang, tidak berhak remedi.";
+      }
+      break;
+    default:
+      Catatan = "Wajib mengulang mata kuliah.";
+      break;
+  }
+  return { lulus: Lulus, catatan: Catatan };
+}
