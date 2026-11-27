@@ -43,3 +43,28 @@ interface Status {
   lulus: boolean;
   catatan: string;
 }
+
+// ===================== INPUT TERMINAL =====================
+// Input dibaca per baris lewat antrian agar bisa dipakai di dalam async/await.
+// Dengan cara ini pertanyaan tetap berurutan seperti versi callback sebelumnya.
+const Antrian: string[] = [];
+const Penunggu: ((Baris: string) => void)[] = [];
+let InputSelesai: boolean = false;
+
+r1.on("line", (Baris: string) => {
+  const Menunggu = Penunggu.shift();
+  if (Menunggu) {
+    Menunggu(Baris);
+  } else {
+    Antrian.push(Baris);
+  }
+});
+
+r1.on("close", () => {
+  // Jika input habis, semua pertanyaan yang menunggu dijawab "0" agar program berhenti
+  InputSelesai = true;
+  while (Penunggu.length > 0) {
+    const Menunggu = Penunggu.shift();
+    if (Menunggu) Menunggu("0");
+  }
+});
