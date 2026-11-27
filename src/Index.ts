@@ -204,3 +204,11 @@ function buatMahasiswa(Id: string, Data: InputMahasiswa): Mahasiswa {
     catatan: Status.catatan,
   };
 }
+// ===================== DATA AWAL (SEED) =====================
+const dataMahasiswa: Mahasiswa[] = [
+  buatMahasiswa("263140707111001", { nama: "Andi Pratama", tugas: 85, uts: 80, uas: 90, hadir: 8, remidi: 0, aktif: true }),
+  buatMahasiswa("263140707111002", { nama: "Budi Santoso", tugas: 70, uts: 65, uas: 60, hadir: 7, remidi: 0, aktif: false }),
+  buatMahasiswa("263140707111003", { nama: "Citra Lestari", tugas: 60, uts: 50, uas: 45, hadir: 6, remidi: 0, aktif: false }),
+  buatMahasiswa("263140707111004", { nama: "Dewi Anggraini", tugas: 20, uts: 30, uas: 40, hadir: 7, remidi: 1, aktif: false }),
+  buatMahasiswa("263140707111005", { nama: "Eko Saputra", tugas: 10, uts: 10, uas: 10, hadir: 4, remidi: 0, aktif: false }),
+];
