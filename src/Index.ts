@@ -183,3 +183,24 @@ function validasiInput(Tugas: number, UTS: number, UAS: number, Hadir: number, R
   }
   return true;
 }
+// Membentuk objek Mahasiswa lengkap beserta hasil perhitungannya
+function buatMahasiswa(Id: string, Data: InputMahasiswa): Mahasiswa {
+  const Kehadiran: number = hitungKehadiran(Data.hadir);
+  const NilaiAkhir: number = hitungNilaiAkhir(Data.tugas, Data.uts, Data.uas, Data.hadir, Data.aktif);
+  const Huruf: string = tentukanHuruf(NilaiAkhir);
+  const Status: Status = tentukanStatus(Huruf, Kehadiran, Data.uas, Data.remidi);
+  return {
+    id: Id,
+    nama: Data.nama,
+    tugas: Data.tugas,
+    uts: Data.uts,
+    uas: Data.uas,
+    hadir: Data.hadir,
+    remidi: Data.remidi,
+    aktif: Data.aktif,
+    nilaiAkhir: NilaiAkhir,
+    huruf: Huruf,
+    lulus: Status.lulus,
+    catatan: Status.catatan,
+  };
+}
