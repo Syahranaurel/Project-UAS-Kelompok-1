@@ -102,3 +102,21 @@ function hitungKehadiran(Hadir: number): number {
   Persen *= 100;
   return Persen;
 }
+
+// Rumus nilai akhir berdasarkan bobot: kehadiran, tugas, UTS, dan UAS
+function hitungNilaiAkhir(Tugas: number, UTS: number, UAS: number, Hadir: number, Aktif: boolean): number {
+  const Kehadiran: number = hitungKehadiran(Hadir);
+  let Nilai: number = Kehadiran * 0.5;
+  Nilai += Tugas * 0.2;
+  Nilai += UTS * 0.15;
+  Nilai += UAS * 0.15;
+
+  // Jika mahasiswa aktif dan hadir sangat tinggi, nilai ditambah
+  if (Aktif && Kehadiran >= 90) {
+    Nilai += 2;
+  } else if (!Aktif && Kehadiran < BatasHadir) {
+    // Jika tidak aktif dan kehadiran kurang, nilai dikurangi
+    Nilai -= 5;
+  }
+  return Nilai;
+}
