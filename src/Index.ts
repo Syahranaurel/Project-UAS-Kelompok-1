@@ -224,3 +224,8 @@ function tampilDetail(M: Mahasiswa): void {
   console.log(`Nilai Akhir    : ${M.nilaiAkhir.toFixed(2)} | Huruf: ${M.huruf}`);
   console.log(`Status         : ${M.lulus ? "Lulus" : "Tidak Lulus"} | Catatan: ${M.catatan}`);
 }
+
+// Menampilkan ringkasan satu mahasiswa dalam satu baris
+function tampilBaris(M: Mahasiswa): void {
+  console.log(`${M.id} | ${M.nama} | Nilai: ${M.nilaiAkhir.toFixed(2)} | ${M.huruf} | ${M.lulus ? "Lulus" : "Tidak Lulus"}`);
+}
