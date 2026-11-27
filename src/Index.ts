@@ -68,3 +68,28 @@ r1.on("close", () => {
     if (Menunggu) Menunggu("0");
   }
 });
+
+// Menampilkan pertanyaan lalu menunggu satu baris jawaban dari user
+function Tanya(Pertanyaan: string): Promise<string> {
+  process.stdout.write(Pertanyaan);
+  return new Promise<string>((Selesai) => {
+    const Jawab = (Baris: string): void => {
+      // Jika input berasal dari file/pipe (bukan keyboard), jawaban ikut ditampilkan
+      if (!process.stdin.isTTY) console.log(Baris);
+      Selesai(Baris);
+    };
+    const Baris = Antrian.shift();
+    if (Baris !== undefined) {
+      Jawab(Baris);
+    } else if (InputSelesai) {
+      Jawab("0");
+    } else {
+      Penunggu.push(Jawab);
+    }
+  });
+}
+
+// Mengubah teks menjadi angka; teks kosong dianggap tidak valid (NaN)
+function keAngka(Teks: string): number {
+  return Teks.trim() === "" ? NaN : Number(Teks);
+}
