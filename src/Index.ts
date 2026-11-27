@@ -212,3 +212,82 @@ const dataMahasiswa: Mahasiswa[] = [
   buatMahasiswa("263140707111004", { nama: "Dewi Anggraini", tugas: 20, uts: 30, uas: 40, hadir: 7, remidi: 1, aktif: false }),
   buatMahasiswa("263140707111005", { nama: "Eko Saputra", tugas: 10, uts: 10, uas: 10, hadir: 4, remidi: 0, aktif: false }),
 ];
+
+// ===================== FUNGSI TAMPILAN =====================
+// Menampilkan seluruh data satu mahasiswa
+function tampilDetail(M: Mahasiswa): void {
+  console.log(`NIM            : ${M.id}`);
+  console.log(`Nama           : ${M.nama}`);
+  console.log(`Tugas/UTS/UAS  : ${M.tugas} / ${M.uts} / ${M.uas}`);
+  console.log(`Hadir          : ${M.hadir}/${TotalPertemuan} (${hitungKehadiran(M.hadir).toFixed(1)}%)`);
+  console.log(`Remidi diambil : ${M.remidi} | Aktif: ${M.aktif ? "iya" : "tidak"}`);
+  console.log(`Nilai Akhir    : ${M.nilaiAkhir.toFixed(2)} | Huruf: ${M.huruf}`);
+  console.log(`Status         : ${M.lulus ? "Lulus" : "Tidak Lulus"} | Catatan: ${M.catatan}`);
+}
+
+// Menampilkan ringkasan satu mahasiswa dalam satu baris
+function tampilBaris(M: Mahasiswa): void {
+  console.log(`${M.id} | ${M.nama} | Nilai: ${M.nilaiAkhir.toFixed(2)} | ${M.huruf} | ${M.lulus ? "Lulus" : "Tidak Lulus"}`);
+}
+
+// ===================== MENU UTAMA =====================
+function tampilMenu(): void {
+  console.log("\n===== SISTEM MANAJEMEN NILAI MAHASISWA =====");
+  console.log("1. Tambah Data");
+  console.log("2. Tampilkan Semua");
+  console.log("3. Detail by ID");
+  console.log("4. Ubah Data");
+  console.log("5. Hapus Data");
+  console.log("6. Cari Data");
+  console.log("0. Keluar");
+}
+
+async function mainMenu(): Promise<void> {
+  let Pilihan: number;
+
+  // Menu diulang terus sampai user memilih 0 (keluar)
+  do {
+    tampilMenu();
+    Pilihan = keAngka(await Tanya("Pilih menu: "));
+
+        // Memilih aksi sesuai angka menu yang dimasukkan pengguna
+    switch (Pilihan) {
+      // Fitur Create akan dibuat di Progress 3
+      case 1:
+        console.log("Fitur Tambah Data tersedia di progress selanjutnya.");
+        break;
+      // Fitur Read (tampil semua) akan dibuat di Progress 4
+      case 2:
+        console.log("Fitur Tampilkan Semua tersedia di progress selanjutnya.");
+        break;
+      // Fitur Read (detail by ID) akan dibuat di Progress 4
+      case 3:
+        console.log("Fitur Detail by ID tersedia di progress selanjutnya.");
+        break;
+      // Fitur Update akan dibuat di Progress 5
+      case 4:
+        console.log("Fitur Ubah Data tersedia di progress selanjutnya.");
+        break;
+      // Fitur Delete akan dibuat di Progress 5
+      case 5:
+        console.log("Fitur Hapus Data tersedia di progress selanjutnya.");
+        break;
+      // Fitur Search akan dibuat di Progress 6
+      case 6:
+        console.log("Fitur Cari Data tersedia di progress selanjutnya.");
+        break;
+      // Pilihan 0 menghentikan perulangan menu
+      case 0:
+        console.log("Terima kasih, program selesai.");
+        break;
+      // Angka lain atau input bukan angka dianggap tidak valid
+      default:
+        console.log("Menu tidak valid");
+        break;
+    }
+  } while (Pilihan !== 0);
+
+  r1.close();
+}
+
+mainMenu();
