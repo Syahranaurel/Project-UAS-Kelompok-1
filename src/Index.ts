@@ -229,3 +229,20 @@ function tampilDetail(M: Mahasiswa): void {
 function tampilBaris(M: Mahasiswa): void {
   console.log(`${M.id} | ${M.nama} | Nilai: ${M.nilaiAkhir.toFixed(2)} | ${M.huruf} | ${M.lulus ? "Lulus" : "Tidak Lulus"}`);
 }
+
+// Menampilkan statistik kelas dari seluruh data
+function statistikKelas(): void {
+  let Total: number = 0;
+  let JumlahLulus: number = 0;
+  let Tertinggi: Mahasiswa = dataMahasiswa[0]!;
+
+  for (const M of dataMahasiswa) {
+    Total += M.nilaiAkhir;
+    if (M.lulus) JumlahLulus++;
+    if (M.nilaiAkhir > Tertinggi.nilaiAkhir) Tertinggi = M;
+  }
+
+  console.log(`Rata-rata nilai akhir : ${(Total / dataMahasiswa.length).toFixed(2)}`);
+  console.log(`Lulus / Tidak Lulus   : ${JumlahLulus} / ${dataMahasiswa.length - JumlahLulus}`);
+  console.log(`Nilai tertinggi       : ${Tertinggi.nama} (${Tertinggi.nilaiAkhir.toFixed(2)})`);
+}
