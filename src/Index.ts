@@ -229,3 +229,15 @@ function tampilDetail(M: Mahasiswa): void {
 function tampilBaris(M: Mahasiswa): void {
   console.log(`${M.id} | ${M.nama} | Nilai: ${M.nilaiAkhir.toFixed(2)} | ${M.huruf} | ${M.lulus ? "Lulus" : "Tidak Lulus"}`);
 }
+
+// ===================== MENU UTAMA =====================
+function tampilMenu(): void {
+  console.log("\n===== SISTEM MANAJEMEN NILAI MAHASISWA =====");
+  console.log("1. Tambah Data");
+  console.log("2. Tampilkan Semua");
+  console.log("3. Detail by ID");
+  console.log("4. Ubah Data");
+  console.log("5. Hapus Data");
+  console.log("6. Cari Data");
+  console.log("0. Keluar");
+}
