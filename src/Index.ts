@@ -93,3 +93,12 @@ function Tanya(Pertanyaan: string): Promise<string> {
 function keAngka(Teks: string): number {
   return Teks.trim() === "" ? NaN : Number(Teks);
 }
+
+// ===================== FUNGSI PERHITUNGAN =====================
+// Menghitung persentase kehadiran dari jumlah yang hadir terhadap total pertemuan
+function hitungKehadiran(Hadir: number): number {
+  let Persen: number = Hadir;
+  Persen /= TotalPertemuan;
+  Persen *= 100;
+  return Persen;
+}
