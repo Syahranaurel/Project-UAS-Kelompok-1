@@ -212,3 +212,15 @@ const dataMahasiswa: Mahasiswa[] = [
   buatMahasiswa("263140707111004", { nama: "Dewi Anggraini", tugas: 20, uts: 30, uas: 40, hadir: 7, remidi: 1, aktif: false }),
   buatMahasiswa("263140707111005", { nama: "Eko Saputra", tugas: 10, uts: 10, uas: 10, hadir: 4, remidi: 0, aktif: false }),
 ];
+
+// ===================== FUNGSI TAMPILAN =====================
+// Menampilkan seluruh data satu mahasiswa
+function tampilDetail(M: Mahasiswa): void {
+  console.log(`NIM            : ${M.id}`);
+  console.log(`Nama           : ${M.nama}`);
+  console.log(`Tugas/UTS/UAS  : ${M.tugas} / ${M.uts} / ${M.uas}`);
+  console.log(`Hadir          : ${M.hadir}/${TotalPertemuan} (${hitungKehadiran(M.hadir).toFixed(1)}%)`);
+  console.log(`Remidi diambil : ${M.remidi} | Aktif: ${M.aktif ? "iya" : "tidak"}`);
+  console.log(`Nilai Akhir    : ${M.nilaiAkhir.toFixed(2)} | Huruf: ${M.huruf}`);
+  console.log(`Status         : ${M.lulus ? "Lulus" : "Tidak Lulus"} | Catatan: ${M.catatan}`);
+}
