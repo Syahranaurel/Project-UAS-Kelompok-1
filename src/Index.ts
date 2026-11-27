@@ -120,3 +120,17 @@ function hitungNilaiAkhir(Tugas: number, UTS: number, UAS: number, Hadir: number
   }
   return Nilai;
 }
+// Menentukan huruf berdasarkan nilai akhir
+function tentukanHuruf(Nilai: number): string {
+  let Huruf: string = "E"; // default jika nilai di bawah 50
+  if (Nilai >= 80) {
+    Huruf = "A";
+  } else if (Nilai >= 70) {
+    Huruf = "B";
+  } else if (Nilai >= 60) {
+    Huruf = "C";
+  } else if (Nilai >= 50) {
+    Huruf = "D";
+  }
+  return Huruf;
+}
