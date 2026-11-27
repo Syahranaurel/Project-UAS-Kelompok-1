@@ -241,3 +241,53 @@ function tampilMenu(): void {
   console.log("6. Cari Data");
   console.log("0. Keluar");
 }
+
+async function mainMenu(): Promise<void> {
+  let Pilihan: number;
+
+  // Menu diulang terus sampai user memilih 0 (keluar)
+  do {
+    tampilMenu();
+    Pilihan = keAngka(await Tanya("Pilih menu: "));
+
+        // Memilih aksi sesuai angka menu yang dimasukkan pengguna
+    switch (Pilihan) {
+      // Fitur Create akan dibuat di Progress 3
+      case 1:
+        console.log("Fitur Tambah Data tersedia di progress selanjutnya.");
+        break;
+      // Fitur Read (tampil semua) akan dibuat di Progress 4
+      case 2:
+        console.log("Fitur Tampilkan Semua tersedia di progress selanjutnya.");
+        break;
+      // Fitur Read (detail by ID) akan dibuat di Progress 4
+      case 3:
+        console.log("Fitur Detail by ID tersedia di progress selanjutnya.");
+        break;
+      // Fitur Update akan dibuat di Progress 5
+      case 4:
+        console.log("Fitur Ubah Data tersedia di progress selanjutnya.");
+        break;
+      // Fitur Delete akan dibuat di Progress 5
+      case 5:
+        console.log("Fitur Hapus Data tersedia di progress selanjutnya.");
+        break;
+      // Fitur Search akan dibuat di Progress 6
+      case 6:
+        console.log("Fitur Cari Data tersedia di progress selanjutnya.");
+        break;
+      // Pilihan 0 menghentikan perulangan menu
+      case 0:
+        console.log("Terima kasih, program selesai.");
+        break;
+      // Angka lain atau input bukan angka dianggap tidak valid
+      default:
+        console.log("Menu tidak valid");
+        break;
+    }
+  } while (Pilihan !== 0);
+
+  r1.close();
+}
+
+mainMenu();
