@@ -175,3 +175,11 @@ function tentukanStatus(Huruf: string, Kehadiran: number, UAS: number, Remedi: n
   }
   return { lulus: Lulus, catatan: Catatan };
 }
+// Validasi input: jika ada angka yang tidak valid atau melebihi range, kembalikan false
+function validasiInput(Tugas: number, UTS: number, UAS: number, Hadir: number, Remedi: number): boolean {
+  if (isNaN(Tugas + UTS + UAS + Hadir + Remedi) || Tugas < 0 || Tugas > 100 ||
+    UTS < 0 || UTS > 100 || UAS < 0 || UAS > 100 || Hadir < 0 || Hadir > TotalPertemuan || Remedi < 0) {
+    return false;
+  }
+  return true;
+}
